@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="TmiPivot.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sdk="clr-namespace:System.Windows.Controls.Pivot;assembly=System.Windows.Controls.Pivot"
+    xmlns:local="clr-namespace:TmiPivot"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        <sdk:PivotViewer x:Name="MyPV" SelectionChanged="MyPV_SelectionChanged">
+            <!--Setting PivotProperties-->
+            <sdk:PivotViewer.PivotProperties>
+                <!-- order of items determines display order in filter and properties -->
+                <sdk:PivotViewerStringProperty Id="IdName" Options="CanFilter" DisplayName="Identification Type" Binding="{Binding IdName}" />
+                <sdk:PivotViewerStringProperty Id="NodeName" Options="CanFilter" DisplayName="Unique Identification" Binding="{Binding NodeName}" />
+                <sdk:PivotViewerStringProperty Id="Taxon" Options="CanFilter" DisplayName="Taxon" Binding="{Binding Taxon}" />
+                <sdk:PivotViewerStringProperty Id="DistinguishingFeatures" Options="CanFilter,CanSearchText" DisplayName="Distinguishing Features" Binding="{Binding DistinguishingFeatures}" />
+                <sdk:PivotViewerStringProperty Id="NodeUiTags" Options="CanFilter,CanSearchText" DisplayName="Component Tags" Binding="{Binding NodeUiTags}" />
+                <sdk:PivotViewerStringProperty Id="ImageUiTags" Options="CanFilter,CanSearchText" DisplayName="Image Tags" Binding="{Binding ImageUiTags}" />
+                <sdk:PivotViewerStringProperty Id="LightType" Options="CanFilter" DisplayName="Light Type" Binding="{Binding LightTypeName}" />
+                <sdk:PivotViewerStringProperty Id="Magnification" Options="CanSearchText" DisplayName="Magnification" Binding="{Binding Magnification}" />
+                <sdk:PivotViewerStringProperty Id="SubmittedBy" Options="CanFilter" DisplayName="Submitted by" Binding="{Binding SubmittedBy}" />
+
+                <sdk:PivotViewerStringProperty Id="ImageDescription" Options="CanSearchText,WrappingText" DisplayName="Description" Binding="{Binding ImageDescription}" />
+                <sdk:PivotViewerStringProperty Id="Notes" Options="CanSearchText,WrappingText" DisplayName="Notes" Binding="{Binding Notes}" />
+                <sdk:PivotViewerStringProperty Id="Year" Options="CanSearchText" DisplayName="Year" Binding="{Binding Year}" />
+                <sdk:PivotViewerStringProperty Id="LakeName" Options="CanSearchText" DisplayName="Lake" Binding="{Binding LakeName}" />
+                <sdk:PivotViewerStringProperty Id="LakeCode" Options="CanSearchText" DisplayName="Lake Code" Binding="{Binding LakeCode}" />
+                <sdk:PivotViewerStringProperty Id="Section" Options="CanSearchText" DisplayName="Section" Binding="{Binding Section}" />
+                <sdk:PivotViewerStringProperty Id="SiteHole" Options="CanSearchText" DisplayName="Site/Hole" Binding="{Binding SiteHole}" />
+                <sdk:PivotViewerStringProperty Id="ImageMediumLoaded" Options="Private" DisplayName="ImageMediumLoaded" Binding="{Binding ImageMediumLoaded}" />
+            </sdk:PivotViewer.PivotProperties>
+
+            <!--Setting data-->
+            <sdk:PivotViewer.ItemTemplates>
+
+                <sdk:PivotViewerItemTemplate MaxWidth="400">
+                    <Border Width="250" Height="250" Background="Blue">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="{Binding ImageThumb}" />
+                        </StackPanel>
+                    </Border>
+                </sdk:PivotViewerItemTemplate>
+
+                <sdk:PivotViewerItemTemplate>
+                    <Grid Width="600" Height="600" Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="450"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Width="600" Background="{Binding HeadColor}">
+                            <TextBlock Text="{Binding HeadTitle}" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Foreground="White" />
+                            <TextBlock Text="{Binding TaxonItalic}" FontSize="18" FontStyle="Italic" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" />
+                            <TextBlock Text="{Binding TaxonPlain}" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" />
+                        </StackPanel>
+                        <Image Grid.Row="1" Source="{Binding ImageMedium}" />
+                        <StackPanel Orientation="Horizontal" Width="600" Grid.Row="2" Background="White">
+                            <StackPanel Orientation="Vertical" Width="590" Margin="5,0,5,0" >
+                                <TextBlock Text="{Binding TagBlob}" TextWrapping="Wrap" FontSize="18" Foreground="Black" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </sdk:PivotViewerItemTemplate>
+            </sdk:PivotViewer.ItemTemplates>
+
+            <sdk:PivotViewer.ItemAdornerStyle>
+                <Style TargetType="sdk:PivotViewerItemAdorner">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="sdk:PivotViewerItemAdorner">
+                                <sdk:PivotViewerDefaultItemAdorner IsTabStop="False"
+                                                                   HorizontalContentAlignment="Center"
+	                                       CommandsRequested="GetCommands"
+	                                       IsItemSelected="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsItemSelected}" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </sdk:PivotViewer.ItemAdornerStyle>
+        </sdk:PivotViewer>
+    </Grid>
+</UserControl>

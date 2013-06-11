@@ -1,0 +1,818 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{00FDDB45-0DCA-4DAA-87A3-16BD0D9ECF65}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TmiPivot</RootNamespace>
+    <AssemblyName>TmiPivotDevelopment</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>TmiPivotDevelopment.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>TmiPivot.App</SilverlightAppEntry>
+    <TestPageFileName>TmiPivotDevelopmentTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kent.Boogaart.HelperTrinity">
+      <HintPath>..\packages\Kent.Boogaart.HelperTrinity.1.5.3\lib\sl50\Kent.Boogaart.HelperTrinity.dll</HintPath>
+    </Reference>
+    <Reference Include="Kent.Boogaart.KBCsv">
+      <HintPath>..\packages\Kent.Boogaart.KBCsv.2.0.2\lib\sl50\Kent.Boogaart.KBCsv.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Silverlight">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4\Microsoft.Threading.Tasks.Extensions.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\sl5\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\sl5\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core">
+      <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls.Pivot, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\src\App.xaml.cs">
+      <Link>App.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MainPage.xaml.cs">
+      <Link>MainPage.xaml.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <Content Include="components\algae\Algae\image0170-200s.jpg" />
+    <Content Include="components\algae\Algae\UnknownBiological_MR_BV_PP-200s.jpg" />
+    <Content Include="components\algae\Algalorganicmatter\algal-200s.jpg" />
+    <Content Include="components\algae\Algalorganicmatter\algal0001-200s.jpg" />
+    <Content Include="components\algae\Algalorganicmatter\algal0002-200s.jpg" />
+    <Content Include="components\algae\Algalorganicmatter\org-200s.jpg" />
+    <Content Include="components\algae\Charophyte\Charophyte_01_pp_AB-200s.jpg" />
+    <Content Include="components\algae\Charophyte\Charophyte_01_xp_AB-200s.jpg" />
+    <Content Include="components\algae\Charophyte\charophyte_oogonia_JS-200s.jpg" />
+    <Content Include="components\algae\Charophyte\charophyte_stem_JS-200s.jpg" />
+    <Content Include="components\algae\Charophyte\charophyte_stem_xp_JS-200s.jpg" />
+    <Content Include="components\algae\Chlorophyte\Scenedesmus_sp_HK0010.jpg-200s.jpg" />
+    <Content Include="components\algae\Chrysophyte\chrysocyst2_TwinLkMN_40xBF_ME-200s.jpg" />
+    <Content Include="components\algae\Chrysophyte\Chrysocyst3_TwinLkMN_40xBF_ME-200s.jpg" />
+    <Content Include="components\algae\Chrysophyte\chrysocyst_TwinLk_MN_40xBF_ME-200s.jpg" />
+    <Content Include="components\algae\Chrysophyte\scaled_chrysophyte_LkSupWI_100xDIC_ME-200s.jpg" />
+    <Content Include="components\algae\Coccolithophore\Coccoliths_1xp1-200s.jpg" />
+    <Content Include="components\algae\Cyanobacteria\cyanobacteria_pp_01-200s.jpg" />
+    <Content Include="components\algae\Cyanobacteria\Cyano_cells_HK0013.jpg-200s.jpg" />
+    <Content Include="components\algae\Desmids\cf_Cosmarium_emptyHK0005.jpg-200s.jpg" />
+    <Content Include="components\algae\Desmids\cf_Cosmarium_emptyHK0006.jpg-200s.jpg" />
+    <Content Include="components\algae\Desmids\cf_Cosmarium_emptyHK0007.jpg-200s.jpg" />
+    <Content Include="components\algae\Desmids\cf_Cosmarium_emptyHK0008.jpg-200s.jpg" />
+    <Content Include="components\algae\Desmids\Staurastrum_sp_HK0012.jpg-200s.jpg" />
+    <Content Include="components\algae\Diatom\Acanthoceras_spores_DIC100xME-200s.jpg" />
+    <Content Include="components\algae\Diatom\Aulacoseira_ambigua_%28spore%29_HK0015.jpg-200s.jpg" />
+    <Content Include="components\algae\Diatom\Chaetoceras_spores_DevilLkND_100x_ME-200s.jpg" />
+    <Content Include="components\algae\Diatom\Diatom-01_JB-200s.jpg" />
+    <Content Include="components\algae\Diatom\diatom-200s.jpg" />
+    <Content Include="components\algae\Diatom\Diatom10Campy_1592_40xBFME-200s.jpg" />
+    <Content Include="components\algae\Diatom\diatom1_TwinLk_MN_63xdryBF_ME-200s.jpg" />
+    <Content Include="components\algae\Diatom\diatom5_TwinLkMN30.2cm_BF63xME-200s.jpg" />
+    <Content Include="components\algae\Diatom\diatom8_KekLk_40xBFME-200s.jpg" />
+    <Content Include="components\algae\Diatom\diatom9chains_1592_40xBFME-200s.jpg" />
+    <Content Include="components\algae\Diatom\Diatoms4_TwinLkMN5_40xBF_ME-200s.jpg" />
+    <Content Include="components\algae\Diatom\Diatom_01_pp_AB-200s.jpg" />
+    <Content Include="components\algae\Diatom\Diatom_02_pp_AB-200s.jpg" />
+    <Content Include="components\algae\Diatom\Diatom_03_pp_AB-200s.jpg" />
+    <Content Include="components\algae\Diatom\diatom_layer_JS-200s.jpg" />
+    <Content Include="components\algae\Diatom\diatom_TwinLk_MN_40xBF_ME-200s.jpg" />
+    <Content Include="components\algae\Diatom\diatom_Urosolenia_spore_100xBF_ME-200s.jpg" />
+    <Content Include="components\algae\Diatom\image0172-200s.jpg" />
+    <Content Include="components\algae\Diatom\image0173-200s.jpg" />
+    <Content Include="components\algae\Diatom\image0174-200s.jpg" />
+    <Content Include="components\algae\Diatom\image0175-200s.jpg" />
+    <Content Include="components\algae\Diatom\image0176-200s.jpg" />
+    <Content Include="components\algae\Diatom\image0185-200s.jpg" />
+    <Content Include="components\algae\Diatom\image0192-200s.jpg" />
+    <Content Include="components\algae\Diatom\TWTW-SLIDE2CP_01-200s.jpg" />
+    <Content Include="components\algae\Diatom\TWTW-SLIDE2PP_01-200s.jpg" />
+    <Content Include="components\algae\Phacotus\phacotus_pp_01-200s.jpg" />
+    <Content Include="components\algae\Phacotus\phacotus_xp_01-200s.jpg" />
+    <Content Include="components\algae\Phacotus\TWTW-SLIDE5CP_01-200s.jpg" />
+    <Content Include="components\algae\Phacotus\TWTW-SLIDE5PP_01-200s.jpg" />
+    <Content Include="components\algae\Silicoflagellate\Silicoflagellate_ppl-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-004-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-005-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-006-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-007-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-008-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-009-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-012-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-013-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-014-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-015-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-016-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-017-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-019-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-025-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-027-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-028-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-029-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-030-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-031-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-032-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-034-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-035-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-037-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-038-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-040-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-041-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-042-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-043-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-044-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-045-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-046-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-047-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-048-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Chironomid\chiro-049-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Cladocera\bosmina_remain_HK0001.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Cladocera\Chydorus_HK0012.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Crustacean\image0193-200s.jpg" />
+    <Content Include="components\arthropod\Daphnia\Daphnia_01_pp_AB-200s.jpg" />
+    <Content Include="components\arthropod\Daphnia\daphnia_egg_casing_BL_JS-200s.jpg" />
+    <Content Include="components\arthropod\Ephydra\brine_fly_ML_JS-200s.jpg" />
+    <Content Include="components\arthropod\Insect\Appendage-01_JB-200s.jpg" />
+    <Content Include="components\arthropod\Insect\Appendage-02_JB-200s.jpg" />
+    <Content Include="components\arthropod\Insect\Appendage-03_JB-200s.jpg" />
+    <Content Include="components\arthropod\Insect\Arthropod-01_JB-200s.jpg" />
+    <Content Include="components\arthropod\Insect\bug_eye_HK0002.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Insect\chiro-010-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Insect\chiro-011-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Insect\chiro-018-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Insect\chiro-020-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Insect\chiro-021-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Insect\chiro-022-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Insect\chiro-023-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Insect\chiro-033-IRW.jpg-200s.jpg" />
+    <Content Include="components\arthropod\Insect\clay_with_diatoms_and_insect_part_JS-200s.jpg" />
+    <Content Include="components\arthropod\Insect\image0171-200s.jpg" />
+    <Content Include="components\arthropod\Insect\image0184-200s.jpg" />
+    <Content Include="components\arthropod\Insect\image0194-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\10-16_ostracode_shell_fragment_xp_JS-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\CHI-HL06-1B-2U-2_ostracode_hash_1_pp-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\CHI-HL06-1B-2U-2_ostracode_hash_1_xp-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\OstFrag-01_JB-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\OstFrag-02b_JB-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\OstFrag-02_JB-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\Ostfrag-03b_JB-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\Ostfrag-03_JB-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\Ostracode-01_JB-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\Ostracode-02_JB-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\Ostracode-03_JB-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\Ostracode_01_pp_AB-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\Ostracode_01_xp_AB-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\ostracode_shell_fragment_JS-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\ostracode_with_diatom_JS-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\ostracod_01_cp_BVG-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\ostracod_01_pp_BVG-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\ostracod_02_cp_BVG-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\ostracod_02_pp_BVG-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\Ostracod_HK0003-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\QH_ostracode_close_up_cp-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\QH_ostracode_cp-200s.jpg" />
+    <Content Include="components\arthropod\Ostracode\QH_ostracode_pp-200s.jpg" />
+    <Content Include="components\contaminant\Bubble\bubble01cp-200s.jpg" />
+    <Content Include="components\contaminant\Bubble\bubble01pp-200s.jpg" />
+    <Content Include="components\contaminant\Bubble\bubble02cp-200s.jpg" />
+    <Content Include="components\contaminant\Bubble\bubble02pp-200s.jpg" />
+    <Content Include="components\contaminant\Fiber\chiro-024-IRW.jpg-200s.jpg" />
+    <Content Include="components\contaminant\Fiber\chiro-026-IRW.jpg-200s.jpg" />
+    <Content Include="components\contaminant\Fiber\Fiber-01_JB-200s.jpg" />
+    <Content Include="components\contaminant\Fiber\Fiber-02_JB-200s.jpg" />
+    <Content Include="components\contaminant\Fiber\RD08-1D-2L-1_92cm_40x_cp_contaminant-200s.jpg" />
+    <Content Include="components\contaminant\Toothpick\toothpick_cp-200s.jpg" />
+    <Content Include="components\contaminant\Toothpick\toothpick_pp-200s.jpg" />
+    <Content Include="components\facies\Aragonitemud\aragonite_mixed_mud_PL_JS-200s.jpg" />
+    <Content Include="components\facies\Calcitemud\anhedral_calcite_mud_JS-200s.jpg" />
+    <Content Include="components\facies\Calcitemud\anhedral_calcite_mud_xp_JS-200s.jpg" />
+    <Content Include="components\facies\Carbonatemud\mixed_carbonate_sediment_PL_JS-200s.jpg" />
+    <Content Include="components\facies\Glacialflour\glacial_flour_BL_JS-200s.jpg" />
+    <Content Include="components\facies\Heavymineralassemblage\Heavy_minerals_1ppl1-200s.jpg" />
+    <Content Include="components\facies\Heavymineralassemblage\Heavy_mineral_assemblage_1_GR-200s.jpg" />
+    <Content Include="components\facies\Micaceoussilt\micaceous_silty_mud_OL_JS-200s.jpg" />
+    <Content Include="components\fish\Fish\image0178-200s.jpg" />
+    <Content Include="components\fish\Fish\image0181-200s.jpg" />
+    <Content Include="components\fish\Fish\image0182-200s.jpg" />
+    <Content Include="components\fish\Fish\image0183-200s.jpg" />
+    <Content Include="components\invertebrate\Bivalve\mussel_shell_fragment_HK0004-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Benthic_forams_2_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Benthic_forams_3_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Benthic_forams_5_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Benthic_forams_6_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Benthic_foram_1_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Benthic_foram_4_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Foraminifera_1ppl1-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Foraminifera_1xp3-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Foraminifera_1_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Foraminifera_2_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Foraminifera_3_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Foraminifera\Planktonic_forams_1_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Gastropod\image0186-200s.jpg" />
+    <Content Include="components\invertebrate\Gastropod\image0187-200s.jpg" />
+    <Content Include="components\invertebrate\Radiolarian\Radiolarian_1_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Radiolarian\Radiolarian_2_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Radiolarian\Radiolarian_3_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Radiolarian\Radiolarian_4_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Sponge\image0190-200s.jpg" />
+    <Content Include="components\invertebrate\Sponge\Siliceous_debris_1ppl1-200s.jpg" />
+    <Content Include="components\invertebrate\Sponge\spicule_pp_01-200s.jpg" />
+    <Content Include="components\invertebrate\Sponge\sponge1_TwinLk_MN_40xBF_ME-200s.jpg" />
+    <Content Include="components\invertebrate\Sponge\Sponge_spicules_10_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Sponge\Sponge_spicules_11_GR-200s.jpg" />
+    <Content Include="components\invertebrate\Sponge\Sponge_spicules_12_GR-200s.jpg" />
+    <Content Include="components\lithofacies\Calcareoussilt\1001_q7_02_cp-200s.jpg" />
+    <Content Include="components\lithofacies\Calcareoussilt\1001_q7_02_pp-200s.jpg" />
+    <Content Include="components\lithofacies\Diatomaceouscarbonatemud\1001_q4_01_cp-200s.jpg" />
+    <Content Include="components\lithofacies\Diatomaceouscarbonatemud\1001_q4_01_pp-200s.jpg" />
+    <Content Include="components\lithofacies\Organic-richcarbonatemudwithpyrite\1001_q6_01_cp-200s.jpg" />
+    <Content Include="components\lithofacies\Organic-richcarbonatemudwithpyrite\1001_q6_01_pp-200s.jpg" />
+    <Content Include="components\mineral\Albite\feldspathic_rock_fragment_BL_JS-200s.jpg" />
+    <Content Include="components\mineral\Albite\feldspathic_rock_fragment_xp_BL_JS-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\Amphibole_1_GR-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\Amphibole_2_GR-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\Amphibole_5_GR-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\Amphibole_6_GR-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\Amphibole_7_GR-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\Amphibole_8_GR-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\FD-92-2-6_90.1CM_PP_63X_BLUE_GREEN_AMPH-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\hornblende1-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\hornblende_xp-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\JH08-1A-2L-1_50CM_AMPH_40X_CP-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\JH08-1A-2L-1_50CM_AMPH_PP_40X-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\PD08-1B-7L-1_35.5CM_AMPH_10X_CP-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\PD08-1B-7L-1_35.5CM_PP_10X_AMPH-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\YELL2-FD2-9-106.7CM-AMPH-CP-63X-200s.jpg" />
+    <Content Include="components\mineral\Amphibole\YELL2-FD2-9_106.7CM_PP_AMPH_63X-200s.jpg" />
+    <Content Include="components\mineral\Apatite\Apatite_01_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Apatite\Apatite_01_xp_AB-200s.jpg" />
+    <Content Include="components\mineral\Apatite\Apatite_1_MDS_cp-200s.jpg" />
+    <Content Include="components\mineral\Apatite\Apatite_1_MDS_pp-200s.jpg" />
+    <Content Include="components\mineral\Aragonite\aragonite_01_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Aragonite\Aragonite_1ppl-200s.jpg" />
+    <Content Include="components\mineral\Aragonite\aragonite_cumulus_PL_JS-200s.jpg" />
+    <Content Include="components\mineral\Aragonite\Tritiform_aragonite_1ppl-200s.jpg" />
+    <Content Include="components\mineral\Aragonite\Tritiform_aragonite_1xp-200s.jpg" />
+    <Content Include="components\mineral\Aragonite\Tritiform_aragonite_2ppl-200s.jpg" />
+    <Content Include="components\mineral\Aragonite\Urmia_20-4_91cm_pp_40x_arag-200s.jpg" />
+    <Content Include="components\mineral\Biotite\Biotite_01_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Biotite\Biotite_01_xp_AB-200s.jpg" />
+    <Content Include="components\mineral\Biotite\Biotite_1ppl1-200s.jpg" />
+    <Content Include="components\mineral\Biotite\Biotite_2ppl-200s.jpg" />
+    <Content Include="components\mineral\Biotite\Biotite_3ppl-200s.jpg" />
+    <Content Include="components\mineral\Biotite\Biotite_4ppl-200s.jpg" />
+    <Content Include="components\mineral\Biotite\Biotite_MR_BV_cp-200s.jpg" />
+    <Content Include="components\mineral\Biotite\Biotite_MR_BV_pp-200s.jpg" />
+    <Content Include="components\mineral\Biotite\biotite_pp_01-200s.jpg" />
+    <Content Include="components\mineral\Biotite\biotite_pp_02-200s.jpg" />
+    <Content Include="components\mineral\Biotite\biotite_xp_02-200s.jpg" />
+    <Content Include="components\mineral\Biotite\Green_biotite-200s.jpg" />
+    <Content Include="components\mineral\Biotite\ISCAY_biotite_cp-200s.jpg" />
+    <Content Include="components\mineral\Biotite\ISCAY_biotite_pp-200s.jpg" />
+    <Content Include="components\mineral\Biotite\RD08-1D-2L-1_92cm_pp_40x_Bt_pleo_halo-200s.jpg" />
+    <Content Include="components\mineral\Biotite\TAJ-KAR08-1B-1P-1_82cm_ppl_40x_Bt-200s.jpg" />
+    <Content Include="components\mineral\Biotite\YELL92-FD-2-9_18.7CM_PP_40X_BT-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_01_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Calcite\Calcite_01_pp_AB_limestone-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_01_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Calcite\Calcite_01_xp_AB_limestone-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_02_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Calcite\Calcite_02_pp_AB_tufa-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_02_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Calcite\Calcite_02_xp_AB_tufa-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_03_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_03_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_04_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_04_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_aggregate_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_aggregate_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_OL_JS-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_pp_01-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_pp_02-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_xp_01-200s.jpg" />
+    <Content Include="components\mineral\Calcite\calcite_xp_02-200s.jpg" />
+    <Content Include="components\mineral\Calcite\carbonate_rock_frag_BL_JS-200s.jpg" />
+    <Content Include="components\mineral\Calcite\Detrital_Calcite_MR_BV_cp-200s.jpg" />
+    <Content Include="components\mineral\Calcite\Detrital_Calcite_MR_BV_pp-200s.jpg" />
+    <Content Include="components\mineral\Calcite\EndogenicCalcite_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Calcite\EndogenicCalcite_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Calcite\rice_grain_calcite_PL_JS-200s.jpg" />
+    <Content Include="components\mineral\Calcite\rice_grain_calcite_xp_PL_JS-200s.jpg" />
+    <Content Include="components\mineral\Calcite\TWTW-SLIDE1CP_01-200s.jpg" />
+    <Content Include="components\mineral\Calcite\TWTW-SLIDE1PP_01-200s.jpg" />
+    <Content Include="components\mineral\Chlorite\RD08-1D-1L-1_77.5cm_cp_10x_chl_anom-200s.jpg" />
+    <Content Include="components\mineral\Chlorite\RD08-1D-1L-1_77.5cm_pp_10x_chl-200s.jpg" />
+    <Content Include="components\mineral\Chlorite\Shuman_Bufflehead_22cm_40x_cp-200s.jpg" />
+    <Content Include="components\mineral\Chlorite\Shuman_Bufflehead_K_22cm_40x_pp-200s.jpg" />
+    <Content Include="components\mineral\Clay\clay_matrix_2_JS-200s.jpg" />
+    <Content Include="components\mineral\Clay\clay_matrix_2_xp_JS-200s.jpg" />
+    <Content Include="components\mineral\Clay\clay_matrix_JS-200s.jpg" />
+    <Content Include="components\mineral\Clay\clay_matrix_with_calcite_needles_2_JS-200s.jpg" />
+    <Content Include="components\mineral\Clay\clay_matrix_with_calcite_needles_2_xp_JS-200s.jpg" />
+    <Content Include="components\mineral\Clay\clay_matrix_with_calcite_needles_JS-200s.jpg" />
+    <Content Include="components\mineral\Clay\clay_matrix_with_calcite_needles_xp_JS-200s.jpg" />
+    <Content Include="components\mineral\Clinopyroxene\YELL2-FD2-9_106.7_cm_cpx-200s.jpg" />
+    <Content Include="components\mineral\Clinopyroxene\YELL2-FD2-9_106.7_cm_xpl-200s.jpg" />
+    <Content Include="components\mineral\Contaminant\RD08-1D-2L-1_92cm_40x_cp_contaminant-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\Dolomite_01_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\Dolomite_01_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\Dolomite_01_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\Dolomite_01_xp_AB-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\Dolomite_1-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\Dolomite_2-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\dolomite_cumulus_PL_JS-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\dolomite_cumulus_xp_PL_JS-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\Dolomite_MR_BV_CC-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\Dolomite_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\GLAD6-BOS04-5A-20H-2_10.7_cm_dolomite_cp-200s.jpg" />
+    <Content Include="components\mineral\Dolomite\GLAD6-BOS04-5A-20H-2_10.7_cm_dolomite_pp-200s.jpg" />
+    <Content Include="components\mineral\Fecalpellet\Brine_shrimp_fecal_pellet-200s.jpg" />
+    <Content Include="components\mineral\Fecalpellet\brine_shrimp_fecal_pellet_RL-200s.jpg" />
+    <Content Include="components\mineral\Fecalpellet\fecal_pellet_PL_JS-200s.jpg" />
+    <Content Include="components\mineral\Feldspar\feldspar_grain_BL_JS-200s.jpg" />
+    <Content Include="components\mineral\Feldspar\feldspar_grain_xp_BL_JS-200s.jpg" />
+    <Content Include="components\mineral\Feldspar\Felspar_MR_BV_01_CP-200s.jpg" />
+    <Content Include="components\mineral\Feldspar\Felspar_MR_BV_01_PP-200s.jpg" />
+    <Content Include="components\mineral\Feldspar\Microcline_01_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Feldspar\Microcline_01_xp_AB-200s.jpg" />
+    <Content Include="components\mineral\Feldspar\Microcline_02_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Feldspar\Microcline_02_xp_AB-200s.jpg" />
+    <Content Include="components\mineral\Feldspar\Zoned_feldspar_1-200s.jpg" />
+    <Content Include="components\mineral\Garnet\garnet_MR_BV_cp-200s.jpg" />
+    <Content Include="components\mineral\Garnet\garnet_MR_BV_pp-200s.jpg" />
+    <Content Include="components\mineral\Garnet\RD08-1D-2L-1_37.5cm_pp_63x_rounded_Gt-200s.jpg" />
+    <Content Include="components\mineral\Garnet\SILV_Gnt-200s.jpg" />
+    <Content Include="components\mineral\Glass\tephra_pp_01-200s.jpg" />
+    <Content Include="components\mineral\Glass\tephra_xp_01-200s.jpg" />
+    <Content Include="components\mineral\Glauconite\Glauconite_1-200s.jpg" />
+    <Content Include="components\mineral\Glauconite\Glauconite_1_GR-200s.jpg" />
+    <Content Include="components\mineral\Glauconite\Glauconite_2-200s.jpg" />
+    <Content Include="components\mineral\Glauconite\Glauconite_3-200s.jpg" />
+    <Content Include="components\mineral\Glauconite\glauconite_grain_OL_JS-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\CHI-HL06-1B-2U-2_gypsum1_pp-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\CHI-HL06-1B-2U-2_gypsum1_xp-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\CHI-HL06-1B-2U-2_gypsum2_pp-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\CHI-HL06-1B-2U-2_gypsum2_xp-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\CHI-HL06-1B-2U-2_gypsum3_pp-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\CHI-HL06-1B-2U-2_gypsum3_xp-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\gypsum_01_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\Gypsum_01_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\gypsum_01_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\Gypsum_01_xp_AB-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\Gypsum_02_pp_AB_detrital-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\Gypsum_02_xp_AB_detrital-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\gypsum_2_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\gypsum_2_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\Gypsum_3_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\Gypsum_3_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\gypsum_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Gypsum\gypsum_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Hematite\HECI-URSW10-2-73cm_a-200s.jpg" />
+    <Content Include="components\mineral\Hematite\HECI-URSW10-2-73cm_b-200s.jpg" />
+    <Content Include="components\mineral\Hematite\TAS-MACK11-1A-2B-1_5.5cm_hematite_cp-200s.jpg" />
+    <Content Include="components\mineral\Hematite\TAS-MACK11-1A-2B-1_5.5cm_hematite_pp-200s.jpg" />
+    <Content Include="components\mineral\Hornblende\Hornblende_5_GR-200s.jpg" />
+    <Content Include="components\mineral\Hornblende\Hornblende_6_GR-200s.jpg" />
+    <Content Include="components\mineral\Hornblende\Hornblende_7_GR-200s.jpg" />
+    <Content Include="components\mineral\Hornblende\Hornblende_8_GR-200s.jpg" />
+    <Content Include="components\mineral\Hornblende\Horneblende-200s.jpg" />
+    <Content Include="components\mineral\Hornblende\Horneblende_2-200s.jpg" />
+    <Content Include="components\mineral\Inclusion\TAJ-KAR08-2A-1P-1_24cm_xpl_40x_inclusions-200s.jpg" />
+    <Content Include="components\mineral\Iron%28Hydr%29oxides,Non-opaque%28Hematite\Limonite%29\iron_oxides_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Iron%28Hydr%29oxides,Non-opaque%28Hematite\Limonite%29\iron_oxides_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Iron%28Hydr%29oxides,Non-opaque%28Hematite\Limonite%29\iron_oxides_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Iron%28Hydr%29oxides,Non-opaque%28Hematite\Limonite%29\iron_oxides_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Ironoxide\calcite_ironoxide_40x_cp-200s.jpg" />
+    <Content Include="components\mineral\Ironoxide\calcite_ironoxide_40x_pp-200s.jpg" />
+    <Content Include="components\mineral\Ironoxide\ironoxide_40x_pp-200s.jpg" />
+    <Content Include="components\mineral\Lithicfragment\PD08-1B-7L-1_3.5CM_10X_CP_LITHIC-200s.jpg" />
+    <Content Include="components\mineral\Lithicfragment\PD08-1B-7L-1_3.5CM_10X_PP_LITHIC_FRAG-200s.jpg" />
+    <Content Include="components\mineral\Lithicfragment\PD08-1B-7L-1_3.5CM_CP_10X_LITHIC_FRAG-200s.jpg" />
+    <Content Include="components\mineral\Magadiite\Magadiite_01_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Magadiite\Magadiite_01_xp_AB-200s.jpg" />
+    <Content Include="components\mineral\Microcline\EYASI_microcline_cp-200s.jpg" />
+    <Content Include="components\mineral\Microcline\EYASI_microcline_polysynth-200s.jpg" />
+    <Content Include="components\mineral\Microcline\EYASI_microcline_pp-200s.jpg" />
+    <Content Include="components\mineral\Muscovite\muscovite_01_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Muscovite\muscovite_01_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Muscovite\muscovite_03_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Muscovite\muscovite_03_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Muscovite\muscovite_cp_02_BVG-200s.jpg" />
+    <Content Include="components\mineral\Muscovite\muscovite_pp_02_BVG-200s.jpg" />
+    <Content Include="components\mineral\Non-opaqueIronOxides%28Hematite\Limonite%29\iron_oxides_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Non-opaqueIronOxides%28Hematite\Limonite%29\iron_oxides_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Non-opaqueIronOxides%28Hematite\Limonite%29\iron_oxides_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Non-opaqueIronOxides%28Hematite\Limonite%29\iron_oxides_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Olivine\olivine01AM-200s.jpg" />
+    <Content Include="components\mineral\Olivine\olivine01AMxp-200s.jpg" />
+    <Content Include="components\mineral\Olivine\olivine02AMcp-200s.jpg" />
+    <Content Include="components\mineral\Olivine\olivine02AMxp-200s.jpg" />
+    <Content Include="components\mineral\Olivine\TAJ-KAR08-1B-1P-1_82cm_40x_ppl_green-200s.jpg" />
+    <Content Include="components\mineral\Olivine\TAJ-KAR08-1B-1P-1_82cm_xpl_40x_green_pleo-200s.jpg" />
+    <Content Include="components\mineral\Opal\Opal_01_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Orthopyroxene\opx_cp3RUD11-200s.jpg" />
+    <Content Include="components\mineral\Orthopyroxene\opx_pp1RUD11-200s.jpg" />
+    <Content Include="components\mineral\Orthopyroxene\opx_pp2RUD11-200s.jpg" />
+    <Content Include="components\mineral\Orthopyroxene\opx_pp3RUD11-200s.jpg" />
+    <Content Include="components\mineral\Orthopyroxene\YELL2-FD-2-9-18.7CM_OPX_PP_63X-200s.jpg" />
+    <Content Include="components\mineral\Orthopyroxene\YELL2-FD-2-9_18.7CM_CP_63X_OPX-200s.jpg" />
+    <Content Include="components\mineral\Palagonite\Palagonite_1ppl-200s.jpg" />
+    <Content Include="components\mineral\Palagonite\Palagonite_2ppl-200s.jpg" />
+    <Content Include="components\mineral\Phillipsite\Phillipsite_10_GR-200s.jpg" />
+    <Content Include="components\mineral\Phillipsite\Phillipsite_11_GR-200s.jpg" />
+    <Content Include="components\mineral\Phillipsite\Phillipsite_12_GR-200s.jpg" />
+    <Content Include="components\mineral\Phillipsite\Phillipsite_13_GR-200s.jpg" />
+    <Content Include="components\mineral\Phillipsite\Phillipsite_1ppl-200s.jpg" />
+    <Content Include="components\mineral\Phillipsite\Phillipsite_2ppl-200s.jpg" />
+    <Content Include="components\mineral\Phillipsite\Phillipsite_3ppl-200s.jpg" />
+    <Content Include="components\mineral\Pirssonite\pirssonite_OL_xp_JS-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\FD-92-2-6_90.1CM_40X_CP_CRACKED_PLAG-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\FD-92-2-6_90.1CM_40X_PP_CRACKED_PLAG-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\JH08-1B-1L-1_92CM_40X_CP_EXSOLUTION-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\JH08-1B-1L-1_92CM_40X_PP_PLG-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\Plagioclase-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\plagioclase_01_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\Plagioclase_01_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\plagioclase_01_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\Plagioclase_01_xp_AB-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\plagioclase_02_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\plagioclase_02_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\plagioclase_03_cp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\plagioclase_03_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\Plagioclase_MR_BV_cp-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\Plagioclase_MR_BV_pp-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\YELL92-FD2-9_20.1CM_63X_PP_LAMELLAE-200s.jpg" />
+    <Content Include="components\mineral\Plagioclase\YELL92-FD2-9_20.1CM_CP_63X_LAMELLAE-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\Framboidal_pyrite_3ppl-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\GNRP_B10_D1_80cm_repl_sulf-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\image0189-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\Pyrite_01_pp_BVG-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\Pyrite_10_GR-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\Pyrite_framboids_1ppl-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\Pyrite_framboids_2ppl1-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\pyrite_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\pyrite_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\pyrite_pp_01-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\pyrite_pp_02-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\Pyrite_pyritohedra_1ppl-200s.jpg" />
+    <Content Include="components\mineral\Pyrite\Pyrite_pyritohedra_2ppl-200s.jpg" />
+    <Content Include="components\mineral\Quartz\Angular_quartz-200s.jpg" />
+    <Content Include="components\mineral\Quartz\GEGO-STLR11-1A-1P-1_54.2CM_40X_PPL_QZ_INC_TRAILS-200s.jpg" />
+    <Content Include="components\mineral\Quartz\Karupa-UPK10-2E-1P1-200s.jpg" />
+    <Content Include="components\mineral\Quartz\Quartz_01_pp_AB_undulose_extinction-200s.jpg" />
+    <Content Include="components\mineral\Quartz\Quartz_01_xp_AB_undulose_extinction-200s.jpg" />
+    <Content Include="components\mineral\Quartz\Quartz_02_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Quartz\Quartz_02_xp_AB-200s.jpg" />
+    <Content Include="components\mineral\Quartz\quartz_pp_01-200s.jpg" />
+    <Content Include="components\mineral\Quartz\quartz_pp_02-200s.jpg" />
+    <Content Include="components\mineral\Quartz\quartz_xp_01-200s.jpg" />
+    <Content Include="components\mineral\Quartz\quartz_xp_02-200s.jpg" />
+    <Content Include="components\mineral\Quartz\TAS-ARTH11-1B-1P-1_6CM_PPL_40X_QZ_INCLUSIONS-200s.jpg" />
+    <Content Include="components\mineral\Rhodochrosite\rhodochrosite_MDS_cp1-200s.jpg" />
+    <Content Include="components\mineral\Rhodochrosite\rhodochrosite_MDS_cp3-200s.jpg" />
+    <Content Include="components\mineral\Rhodochrosite\rhodochrosite_MDS_pp1-200s.jpg" />
+    <Content Include="components\mineral\Rhodochrosite\rhodochrosite_MDS_pp2-200s.jpg" />
+    <Content Include="components\mineral\Rhodochrosite\rhodochrosite_MDS_pp3-200s.jpg" />
+    <Content Include="components\mineral\Rhodochrosite\rhodocrosite_MDS_cp2-200s.jpg" />
+    <Content Include="components\mineral\Rutile\BOS_rutile_cp-200s.jpg" />
+    <Content Include="components\mineral\Rutile\BOS_rutile_pp-200s.jpg" />
+    <Content Include="components\mineral\Siderite\siderite_01_pp-200s.jpg" />
+    <Content Include="components\mineral\Siderite\siderite_01_xp-200s.jpg" />
+    <Content Include="components\mineral\Sulfur\Sulfur_MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Sulfur\Sulfur_MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Tephra\Glacier_Pk_tephra1_MDS_cp-200s.jpg" />
+    <Content Include="components\mineral\Tephra\Glacier_Pk_tephra1_MDS_pp-200s.jpg" />
+    <Content Include="components\mineral\Tephra\Mazama_tephra_1_MDS_cp-200s.jpg" />
+    <Content Include="components\mineral\Tephra\Mazama_tephra_1_MDS_pp-200s.jpg" />
+    <Content Include="components\mineral\Tephra\Mazama_tephra_2_MDS_pp-200s.jpg" />
+    <Content Include="components\mineral\Tephra\Tephra_01_pp_AB-200s.jpg" />
+    <Content Include="components\mineral\Tourmaline\biotite_pp_01-200s.jpg" />
+    <Content Include="components\mineral\Tourmaline\TAS-ARTH11-1B-1P-1_80CM_PP_63X_BLK_TRML-200s.jpg" />
+    <Content Include="components\mineral\Tourmaline\TAS-ARTH11-1B-1P-1_94cm_tourmaline1_pp-200s.jpg" />
+    <Content Include="components\mineral\Tourmaline\TAS-ARTH11-1B-1P-1_94cm_tourmaline2_pp-200s.jpg" />
+    <Content Include="components\mineral\Tourmaline\TAS-ARTH11-1B-1P-1_94cm_tourmaline3_cp-200s.jpg" />
+    <Content Include="components\mineral\Tourmaline\TAS-ARTH11-1B-1P-1_94cm_tourmaline3_pp-200s.jpg" />
+    <Content Include="components\mineral\Tourmaline\tourmaline_pp_01-200s.jpg" />
+    <Content Include="components\mineral\Tourmaline\tourmaline_xp_01-200s.jpg" />
+    <Content Include="components\mineral\Trona\trona_OL_JS-200s.jpg" />
+    <Content Include="components\mineral\Trona\trona_OL_xp_JS-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\CHAL_vivianite_cp-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\CHAL_vivianite_pp-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\CHAL_vivianite_pp_blue-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\GLAD5-VC04-1A-22H-1_146.8cm_pp_40x_viv-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\ironfest_10x_ppl_oxidation_viv_lim_pyr-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\IRONFEST_10x_ppl_vivianite_limonite_pyrite-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\IRONFEST_10x_xpl_vivianite_limonite_pyrite-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\vivianite.MR_BV_CP-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\vivianite.MR_BV_PP-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\vivianite_MDS_cp1-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\vivianite_MDS_pp1-200s.jpg" />
+    <Content Include="components\mineral\Vivianite\vivianite_pp_01-200s.jpg" />
+    <Content Include="components\mineral\VolcanicGlass\Glass_Shard_MR_BV_cp-200s.jpg" />
+    <Content Include="components\mineral\VolcanicGlass\Glass_Shard_MR_BV_pp-200s.jpg" />
+    <Content Include="components\mineral\VolcanicGlass\Volcanic_glass_1_ppl-200s.jpg" />
+    <Content Include="components\mineral\VolcanicGlass\Volcanic_glass_2_ppl-200s.jpg" />
+    <Content Include="components\mineral\VolcanicGlass\YELL2-FD2-9-106.7CM-GREEN_VOLX-200s.jpg" />
+    <Content Include="components\mineral\VolcanicGlass\YELL2-FD2-9-106.7CM_GREEN_VOLX_CP_40X-200s.jpg" />
+    <Content Include="components\mineral\VolcanicGlass\YELL2-FD2-9_106.7CM_63X_GLASS_INCLUSIONS-200s.jpg" />
+    <Content Include="components\mineral\VolcanicGlass\YELL2-FD2-9_106.7CM_GLASS_BUBBLES_63X_PP-200s.jpg" />
+    <Content Include="components\mineral\VolcanicGlass\YELL_Lewis_LL92-1-2K-4_79.5cm_tephra_40x_pp-200s.jpg" />
+    <Content Include="components\mineral\Zircon\TAS-WDS11-1A-2B-1_84.2cm_ppl_40x_Zr2-200s.jpg" />
+    <Content Include="components\mineral\Zircon\TAS-WDS11-1A-2B-1_84.2cm_ppl_40x_Zr3-200s.jpg" />
+    <Content Include="components\mineral\Zircon\TAS-WDS11-1A-2B-1_84.2cm_xpl_40x_Zr-200s.jpg" />
+    <Content Include="components\mineral\Zircon\TAS-WDS11-1A-2B-1_84.2cm_xpl_40x_Zr2-200s.jpg" />
+    <Content Include="components\mineral\Zircon\TAS-WDS11-1A-2B-1_84.2cm_xpl_40x_Zr3-200s.jpg" />
+    <Content Include="components\mineral\Zircon\TAS-WDS11-1A-2B-1_89.4cm_ppl_40x_hex_frag-200s.jpg" />
+    <Content Include="components\mineral\Zircon\TAS-WDS11-1A-2B-1_89.4cm_xpl_40x_hex_frag-200s.jpg" />
+    <Content Include="components\mineral\Zircon\TAS-WDS11_1A-2B-1_84.2cm_40x_ppl_Zr-200s.jpg" />
+    <Content Include="components\mineral\Zircon\Zircon_2ppl-200s.jpg" />
+    <Content Include="components\mineral\Zircon\Zircon_3ppl-200s.jpg" />
+    <Content Include="components\plant\Charcoal\charcoal-grass_pp_01-200s.jpg" />
+    <Content Include="components\plant\Charcoal\charred_particle-200s.jpg" />
+    <Content Include="components\plant\Charcoal\charred_particle_reflected_plane_polarized_light-200s.jpg" />
+    <Content Include="components\plant\Charcoal\EYASI_charcoal-200s.jpg" />
+    <Content Include="components\plant\Charcoal\image0177-200s.jpg" />
+    <Content Include="components\plant\Charcoal\image0191-200s.jpg" />
+    <Content Include="components\plant\Phytolith\EYASI-phytolith1-200s.jpg" />
+    <Content Include="components\plant\Phytolith\EYASI-phytolith2-200s.jpg" />
+    <Content Include="components\plant\Phytolith\EYASI-phytolith3-200s.jpg" />
+    <Content Include="components\plant\Phytolith\EYASI-phytolith4-200s.jpg" />
+    <Content Include="components\plant\Phytolith\grass_phytolith_HK0014.jpg-200s.jpg" />
+    <Content Include="components\plant\Phytolith\phytolith_pp_01-200s.jpg" />
+    <Content Include="components\plant\Phytolith\phytolith_xp_01-200s.jpg" />
+    <Content Include="components\plant\Pinepollen\pollen-pine_pp_01-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Abies_balsamea_needle_1398-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Acer_negundo_seed_kvz_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Acer_rubrum_seed_51_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Acer_saccharinum_seed_athens_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Acer_saccharum_bud_scales_3213_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Acer_saccharum_twig_3213_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Agastache_foeniculum_seed_2073_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Alisma_subcordatum_seed_JohnsonCo_1975_jm-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Alnus_incana_catkin_bracht_2144_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Alnus_incana_seed_70_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Alnus_serrulata_catkin_bract_3076_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Alnus_serrulata_seed_3076_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Alnus_viridis_catkin_bracht_2970_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Alnus_viridis_seed_2970_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Atriplex_patula_seed_227_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Betula_alleghaniensis_catkin_bracht_79_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Betula_alleghaniensis_seed_79_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Betula_papyrifera_catkin_bracht_3039_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Betula_papyrifera_seed_3039_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Betula_pumila_catkin_bract_77_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Betula_pumila_leaf_top_77_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Betula_pumila_leaf_underside_77_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Betula_pumila_seed_77_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Brasenia_schreberi_fruit_1343_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Brasenia_schreberi_seed_1343_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Campanula_americana_seed_2863_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Capsella_bursa-pastoris_seed_2252_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_backii_achene_536_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_backii_perigynia_536_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_deweyana_achene_585_jm_edit2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_deweyana_perigynia_585_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_jamesii_achene_634_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_jamesii_perigynia_634_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_squarrosa_achene_736_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_squarrosa_perigynia_736_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_tribuloides_achene_755_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_tribuloides_perigynia_755_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_viridula_achene_772_jm_vs_photochop-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carex_viridula_perigynia_772_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carpinus_caroliniana_bud_scales_3168_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carpinus_caroliniana_involucre_abaxial_91_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carpinus_caroliniana_involucre_adaxial_seed_91_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carpinus_caroliniana_seed_91_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Carpinus_caroliniana_twig_and_bud_3168_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Cerastium_nutans_seed_180_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Chara_sp_oogonia_219_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Chenopodium_album_seed_2704_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Chenopodium_glaucum_seed_2519_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Chenopodium_pratericola_seed_2422_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Cicuta_maculata_seed_1915_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Claytonia_virginica_seed_1575_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Cryptotaenia_canadensis_seed_2758_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Cyperus_odoratus_achene_3012_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Cyperus_squarrosus_achene_2581_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Cyperus_strigosus_achene_801_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Eleocharis_acicularis_achene_808_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Eleocharis_ovata_achene_822_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Eleocharis_palustris_achene_2677_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Eupatorium_altissimum_seed_2943_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Eupatorium_purpureum_seed_2088_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Eupatorium_rugosum_seed_2951_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Euphorbia_corollata_seed_2649_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Eurybia_macrophylla_seed_MNMN_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Fagus_grandifolia_seed_2906_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Fraxinus_americana_seed_3188_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Fraxinus_nigra_seed_1355_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Fraxinus_pennsylvanica_seed_1357_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Galium_triflorum_seed_3175_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Gleditsia_triacanthos_leaf_abaxial_3167_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Gleditsia_triacanthos_leaf_adaxial_3167_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Iodanthus_pinnatifidus_seed_480_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Larix_laricina_cone_1411_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Larix_laricina_needle_1411_jm_edit2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Larix_laricina_seed_1411_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Larix_laricina_twig_bud_1411_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Linum_striatum_seed_3084_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Morus_rubra_seed_2890_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Najas_flexilis_seed_1333_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Najas_guadalupensis_seed_1335_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Najas_marina_seed_1336_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Nuphar_advena_seed_1347_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Nuphar_lutea_seed_1351_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Nuphar_lutea_ssp_polysepala_seed_3220_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Nymphaea_odorata_seed_3226_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Nyssa_sylvatica_seed_2811_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Ostrya_virginiana_involucre_2849_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Ostrya_virginiana_seed_2849_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Ostrya_virginiana_twig_2849_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Picea_mariana_needle_2124_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Platanus_occidentalis_seed_1485_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Platanus_occidentalis_twig_2905_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Polygonum_scandens_seed_2740_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Populus_tremuloides_bud_scale_2865_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Potamogeton_epihydrus_achene_external_2003_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Potamogeton_epihydrus_achene_internal_2003_jm-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Potamogeton_natans_achene_external_2012_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Potamogeton_natans_achene_internal_2012_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Prunus_serotina_seed_1726_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Prunus_serotina_seed_fleshy_1726_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Prunus_serotina_twig_2864_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Quercus_macrocarpa_seed_972_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Quercus_macrocarpa_seed_cap_972_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Quercus_palustris_seed_975_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Quercus_palustris_seed_cap_975_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Quercus_velutina_seed_3194_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Quercus_velutina_seed_cap_3194_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Ranunculus_abortivus_seed_2430_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Ranunculus_hispidus_seed_3040_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Rorippa_palustris_seed_2621_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Rudbeckia_triloba_seed_3107_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Sagittaria_latifolia_seed_potosi_1969_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Sagittaria_rigida_seed_DickinsonCo_1961_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Salix_amygdaloides_leaf_abaxial_2831_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Salix_amygdaloides_leaf_adaxial_2831_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Salix_amygdaloides_seed_2831_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Salvia_lyrata_seed_2732_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Sambucus_canadensis_seed_139_jm_edit_2-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Sanicula_gregaria_seed_1936_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Schoenoplectus_acutus_847_1_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Schoenoplectus_tabernaemontani_870_2_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Scirpus_atrovirens_achene_851_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Taenidia_integerrima_seed_1943_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Thalictrum_dioicum_seed_2895_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Tilia_americana_seed_2426_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Triodanis_perfoliata_seed_124_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Ulmus_americana_bud_2908_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Ulmus_americana_bud_scale_2908_jm_edit-200s.jpg" />
+    <Content Include="components\plant\PlantMacrofossil\Zizania_aquatica_seed_2046_jm_edit-200s.jpg" />
+    <Content Include="components\plant\Plant\EYASI-plant-200s.jpg" />
+    <Content Include="components\plant\Plant\image0179-200s.jpg" />
+    <Content Include="components\plant\Plant\image0180-200s.jpg" />
+    <Content Include="components\plant\Plant\image0188-200s.jpg" />
+    <Content Include="components\plant\Plant\pollen_and_moss_material_HK0010.jpg-200s.jpg" />
+    <Content Include="components\plant\Plant\vascular org-200s.jpg" />
+    <Content Include="components\plant\Pollen\A2809tmi-200s.jpg" />
+    <Content Include="components\plant\Pollen\Abies_balsamea-200s.jpg" />
+    <Content Include="components\plant\Pollen\Abies_balsamea_2-200s.jpg" />
+    <Content Include="components\plant\Pollen\Acer_rubrum-200s.jpg" />
+    <Content Include="components\plant\Pollen\Alnus_rugosa-200s.jpg" />
+    <Content Include="components\plant\Pollen\Ambrosia_trifida-200s.jpg" />
+    <Content Include="components\plant\Pollen\Artemisia_frigida-200s.jpg" />
+    <Content Include="components\plant\Pollen\Betula_papyrifera-200s.jpg" />
+    <Content Include="components\plant\Pollen\Carex_pensylvanica-200s.jpg" />
+    <Content Include="components\plant\Pollen\Chenopodium_album-200s.jpg" />
+    <Content Include="components\plant\Pollen\Equisetum_arvense-200s.jpg" />
+    <Content Include="components\plant\Pollen\Fraxinus-200s.jpg" />
+    <Content Include="components\plant\Pollen\Helianthus_annuus-200s.jpg" />
+    <Content Include="components\plant\Pollen\Iva_annua-200s.jpg" />
+    <Content Include="components\plant\Pollen\Iva_xanthifolia-200s.jpg" />
+    <Content Include="components\plant\Pollen\Lilium_longiflorum-200s.jpg" />
+    <Content Include="components\plant\Pollen\Lilium_michiganense-200s.jpg" />
+    <Content Include="components\plant\Pollen\Lycopodium_annotinum-200s.jpg" />
+    <Content Include="components\plant\Pollen\Nuphar_variegata-200s.jpg" />
+    <Content Include="components\plant\Pollen\Nymphaea_odorata-200s.jpg" />
+    <Content Include="components\plant\Pollen\Phleum_pratense-200s.jpg" />
+    <Content Include="components\plant\Pollen\Phleum_pratense_2-200s.jpg" />
+    <Content Include="components\plant\Pollen\Picea_mariana-200s.jpg" />
+    <Content Include="components\plant\Pollen\Picea_mariana_2-200s.jpg" />
+    <Content Include="components\plant\Pollen\Pinus_resinosa-200s.jpg" />
+    <Content Include="components\plant\Pollen\Pinus_strobus-200s.jpg" />
+    <Content Include="components\plant\Pollen\Pinus_strobus_2-200s.jpg" />
+    <Content Include="components\plant\Pollen\pollen-pine_pp_01-200s.jpg" />
+    <Content Include="components\plant\Pollen\Pontederia_odorata-200s.jpg" />
+    <Content Include="components\plant\Pollen\Potamogeton_zosteriformis-200s.jpg" />
+    <Content Include="components\plant\Pollen\Pteridium_aquilinum-200s.jpg" />
+    <Content Include="components\plant\Pollen\Quercus_alba-200s.jpg" />
+    <Content Include="components\plant\Pollen\Quercus_macrocarpa-200s.jpg" />
+    <Content Include="components\plant\Pollen\Rumex_altissimus-200s.jpg" />
+    <Content Include="components\plant\Pollen\Salix_humilis-200s.jpg" />
+    <Content Include="components\plant\Pollen\Sphagnum_magellanicum-200s.jpg" />
+    <Content Include="components\plant\Pollen\Taraxacum_officinale-200s.jpg" />
+    <Content Include="components\plant\Pollen\Tilia_americana-200s.jpg" />
+    <Content Include="components\plant\Pollen\Typha_latifolia-200s.jpg" />
+    <Content Include="components\plant\Pollen\Ulmus_rubra-200s.jpg" />
+    <Content Include="components\plant\Pollen\Xanthium_strumarium-200s.jpg" />
+    <Content Include="components\plant\Pollen\Zea_mays-200s.jpg" />
+    <Content Include="components\plant\Pollen\Zizania-200s.jpg" />
+    <Content Include="TmiPivotMetadata.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\src\App.xaml">
+      <Link>App.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\src\MainPage.xaml">
+      <Link>MainPage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.6\tools\Microsoft.Bcl.Build.targets" />
+</Project>
