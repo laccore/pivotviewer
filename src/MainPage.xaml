@@ -26,11 +26,13 @@
                 <sdk:PivotViewerStringProperty Id="ImageDescription" Options="CanSearchText,WrappingText" DisplayName="Description" Binding="{Binding ImageDescription}" />
                 <sdk:PivotViewerStringProperty Id="Notes" Options="CanSearchText,WrappingText" DisplayName="Notes" Binding="{Binding Notes}" />
                 <sdk:PivotViewerStringProperty Id="Year" Options="CanSearchText" DisplayName="Year" Binding="{Binding Year}" />
-                <sdk:PivotViewerStringProperty Id="LakeName" Options="CanSearchText" DisplayName="Lake" Binding="{Binding LakeName}" />
-                <sdk:PivotViewerStringProperty Id="LakeCode" Options="CanSearchText" DisplayName="Lake Code" Binding="{Binding LakeCode}" />
+                <sdk:PivotViewerStringProperty Id="LakeName" Options="CanSearchText" DisplayName="Site" Binding="{Binding LakeName}" />
+                <sdk:PivotViewerStringProperty Id="LakeCode" Options="CanSearchText" DisplayName="Site Code" Binding="{Binding LakeCode}" />
                 <sdk:PivotViewerStringProperty Id="Section" Options="CanSearchText" DisplayName="Section" Binding="{Binding Section}" />
                 <sdk:PivotViewerStringProperty Id="SiteHole" Options="CanSearchText" DisplayName="Site/Hole" Binding="{Binding SiteHole}" />
-                <sdk:PivotViewerStringProperty Id="ImageMediumLoaded" Options="Private" DisplayName="ImageMediumLoaded" Binding="{Binding ImageMediumLoaded}" />
+                <sdk:PivotViewerStringProperty Id="CommonName" Options="Private,CanSearchText" DisplayName="Common Name" Binding="{Binding CommonName}" />
+                <sdk:PivotViewerStringProperty Id="Family" Options="Private,CanSearchText" DisplayName="Family" Binding="{Binding Family}" />
+                <sdk:PivotViewerStringProperty Id="ImageMediumLoaded" Options="Private" DisplayName="Image Medium Loaded" Binding="{Binding ImageMediumLoaded}" />
             </sdk:PivotViewer.PivotProperties>
 
             <!--Setting data-->

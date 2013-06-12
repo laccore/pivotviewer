@@ -94,8 +94,9 @@ namespace TmiPivot
 
         private TmiImage createFromRecord(DataRecord rec)
         {
-            return new TmiImage(rec["nodename"], rec["idname"], rec["imagename"], rec["filename"], rec["filenamemedium"], rec["filenamethumb"], rec["lakecode"], rec["lakename"],
-                rec["magnification"], rec["notes"], rec["section"], rec["sitehole"], rec["submittedby"], rec["year"], rec["taxon"], rec["imageuitags"], rec["description"],
+            return new TmiImage(rec["nodename"], rec["idname"], rec["imagename"], rec["filename"], rec["filenamemedium"], rec["filenamethumb"],
+                rec["lakecode"], rec["lakename"], rec["magnification"], rec["notes"], rec["section"], rec["sitehole"], rec["submittedby"],
+                rec["year"], rec["taxon"], rec["commonname"], rec["family"], rec["imageuitags"], rec["description"],
                 rec["distinguishingfeatures"], rec["nodeuitags"], rec["lighttypename"]);
         }
     }
@@ -120,6 +121,8 @@ namespace TmiPivot
         public string SubmittedBy { get; set; }
         public string Year { get; set; }
         public string Taxon { get; set; }
+        public string CommonName { get; set; }
+        public string Family { get; set; }
         public List<string> ImageUiTags { get; set; }
         public string ImageDescription { get; set; } // naming "Description" led to this text always showing in the title of the properties pane
         public List<string> DistinguishingFeatures { get; set; }
@@ -181,8 +184,10 @@ namespace TmiPivot
             return tagList;
         }
 
-        public TmiImage(string nodename, string idname, string imagename, string filename, string filenamemedium, string filenamethumb, string lakecode, string lakename, string magnification,
-            string notes, string section, string sitehole, string submittedby, string year, string taxon, string imageuitags, string description, string distinguishingfeatures, string nodeuitags, string lighttypename)
+        public TmiImage(string nodename, string idname, string imagename, string filename, string filenamemedium, string filenamethumb,
+            string lakecode, string lakename, string magnification, string notes, string section, string sitehole, string submittedby,
+            string year, string taxon, string commonname, string family, string imageuitags, string description, string distinguishingfeatures,
+            string nodeuitags, string lighttypename)
         {
             NodeName = nodename;
             IdName = idname;
@@ -200,6 +205,8 @@ namespace TmiPivot
             SubmittedBy = handleNullValue(submittedby);
             Year = handleNullValue(year);
             Taxon = handleNullValue(taxon);
+            CommonName = handleNullValue(commonname);
+            Family = handleNullValue(family);
             ImageUiTags = parseTags(imageuitags);
             ImageDescription = handleNullValue(description);
             DistinguishingFeatures = parseTags(distinguishingfeatures);
@@ -227,6 +234,13 @@ namespace TmiPivot
             HeadTitle = IdName + " :: " + NodeName;
 
             string result = String.Empty;
+            if (CommonName.Length > 0)
+                result += "Common Name: " + CommonName + " ";
+            if (Family.Length > 0)
+                result += "Family: " + Family;
+            if (result.Length > 0)
+                result += "\n";
+
             if (DistinguishingFeatures.Count > 0)
             {
                 string distFeats = String.Empty;
