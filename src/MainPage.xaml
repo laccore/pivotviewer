@@ -16,22 +16,21 @@
                 <sdk:PivotViewerStringProperty Id="IdName" Options="CanFilter" DisplayName="Identification Type" Binding="{Binding IdName}" />
                 <sdk:PivotViewerStringProperty Id="NodeName" Options="CanFilter" DisplayName="Unique Identification" Binding="{Binding NodeName}" />
                 <sdk:PivotViewerStringProperty Id="Taxon" Options="CanFilter" DisplayName="Taxon" Binding="{Binding Taxon}" />
-                <sdk:PivotViewerStringProperty Id="DistinguishingFeatures" Options="CanFilter,CanSearchText" DisplayName="Distinguishing Features" Binding="{Binding DistinguishingFeatures}" />
-                <sdk:PivotViewerStringProperty Id="NodeUiTags" Options="CanFilter,CanSearchText" DisplayName="Component Tags" Binding="{Binding NodeUiTags}" />
-                <sdk:PivotViewerStringProperty Id="ImageUiTags" Options="CanFilter,CanSearchText" DisplayName="Image Tags" Binding="{Binding ImageUiTags}" />
+                <sdk:PivotViewerStringProperty Id="CommonName" Options="CanSearchText" DisplayName="Common Name" Binding="{Binding CommonName}" />
+                <sdk:PivotViewerStringProperty Id="Family" Options="CanSearchText" DisplayName="Family" Binding="{Binding Family}" />
+                <sdk:PivotViewerStringProperty Id="Tags" Options="CanFilter,CanSearchText" DisplayName="Tags" Binding="{Binding CombinedTags}" />
+                <sdk:PivotViewerStringProperty Id="ImageDescription" Options="CanSearchText,WrappingText" DisplayName="Description" Binding="{Binding ImageDescription}" />
+                <sdk:PivotViewerStringProperty Id="Notes" Options="CanSearchText,WrappingText" DisplayName="Notes" Binding="{Binding Notes}" />
+
                 <sdk:PivotViewerStringProperty Id="LightType" Options="CanFilter" DisplayName="Light Type" Binding="{Binding LightTypeName}" />
                 <sdk:PivotViewerStringProperty Id="Magnification" Options="CanSearchText" DisplayName="Magnification" Binding="{Binding Magnification}" />
                 <sdk:PivotViewerStringProperty Id="SubmittedBy" Options="CanFilter" DisplayName="Submitted by" Binding="{Binding SubmittedBy}" />
-
-                <sdk:PivotViewerStringProperty Id="ImageDescription" Options="CanSearchText,WrappingText" DisplayName="Description" Binding="{Binding ImageDescription}" />
-                <sdk:PivotViewerStringProperty Id="Notes" Options="CanSearchText,WrappingText" DisplayName="Notes" Binding="{Binding Notes}" />
                 <sdk:PivotViewerStringProperty Id="Year" Options="CanSearchText" DisplayName="Year" Binding="{Binding Year}" />
                 <sdk:PivotViewerStringProperty Id="LakeName" Options="CanSearchText" DisplayName="Site" Binding="{Binding LakeName}" />
                 <sdk:PivotViewerStringProperty Id="LakeCode" Options="CanSearchText" DisplayName="Site Code" Binding="{Binding LakeCode}" />
                 <sdk:PivotViewerStringProperty Id="Section" Options="CanSearchText" DisplayName="Section" Binding="{Binding Section}" />
                 <sdk:PivotViewerStringProperty Id="SiteHole" Options="CanSearchText" DisplayName="Site/Hole" Binding="{Binding SiteHole}" />
-                <sdk:PivotViewerStringProperty Id="CommonName" Options="Private,CanSearchText" DisplayName="Common Name" Binding="{Binding CommonName}" />
-                <sdk:PivotViewerStringProperty Id="Family" Options="Private,CanSearchText" DisplayName="Family" Binding="{Binding Family}" />
+                
                 <sdk:PivotViewerStringProperty Id="ImageMediumLoaded" Options="Private" DisplayName="Image Medium Loaded" Binding="{Binding ImageMediumLoaded}" />
             </sdk:PivotViewer.PivotProperties>
 
@@ -55,13 +54,13 @@
                         </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal" Width="600" Background="{Binding HeadColor}">
                             <TextBlock Text="{Binding HeadTitle}" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0" Foreground="White" />
-                            <TextBlock Text="{Binding TaxonItalic}" FontSize="18" FontStyle="Italic" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" />
-                            <TextBlock Text="{Binding TaxonPlain}" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" />
+                            <TextBlock Text="{Binding HeadTaxonItalic}" FontSize="18" FontStyle="Italic" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" />
+                            <TextBlock Text="{Binding HeadTaxonPlain}" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" />
                         </StackPanel>
                         <Image Grid.Row="1" Source="{Binding ImageMedium}" />
                         <StackPanel Orientation="Horizontal" Width="600" Grid.Row="2" Background="White">
                             <StackPanel Orientation="Vertical" Width="590" Margin="5,0,5,0" >
-                                <TextBlock Text="{Binding TagBlob}" TextWrapping="Wrap" FontSize="18" Foreground="Black" />
+                                <TextBlock Text="{Binding InfoText}" TextWrapping="Wrap" FontSize="18" Foreground="Black" />
                             </StackPanel>
                         </StackPanel>
                     </Grid>

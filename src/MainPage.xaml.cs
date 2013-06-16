@@ -123,15 +123,11 @@ namespace TmiPivot
         public string Taxon { get; set; }
         public string CommonName { get; set; }
         public string Family { get; set; }
-        public List<string> ImageUiTags { get; set; }
         public string ImageDescription { get; set; } // naming "Description" led to this text always showing in the title of the properties pane
-        public List<string> DistinguishingFeatures { get; set; }
-        public List<string> NodeUiTags { get; set; }
         public string LightTypeName { get; set; }
-
+        public List<string> CombinedTags { get; set; }
         public Uri ImageBigPath { get; set; }
         public string ImageMediumPath { get; set; }
-
         public BitmapImage ImageThumb { get; set; }
         public BitmapImage imageMedium;
         public BitmapImage ImageMedium
@@ -152,16 +148,16 @@ namespace TmiPivot
             }
         }
 
-        // members strictly for display purposes
+        // members used to display high-detail trading card (when zoomed in)
         public SolidColorBrush HeadColor { get; set; }
         public string HeadTitle { get; set; }
-        public string TagBlob { get; set; }
-        public string TaxonItalic { get; set; }
-        public string TaxonPlain { get; set; }
+        public string HeadTaxonItalic { get; set; }
+        public string HeadTaxonPlain { get; set; }
+        public string InfoText { get; set; }
 
         // To trigger redraw of a trading card once its medium-res image is downloaded, a pivot property (anything in
-        // <sdk:PivotViewer.PivotProperties>) needs to be changed. Added this semi-dummy property to force redraw
-        // without touching actual image metadata.
+        // <sdk:PivotViewer.PivotProperties>) needs to be changed. Use this semi-dummy property to force redraw
+        // without modifying meaningful image metadata.
         public bool ImageMediumLoaded { get; set; }
 
         public TagStringList parseTags(string tagString)
@@ -182,6 +178,18 @@ namespace TmiPivot
                 tagList = new TagStringList();
             }
             return tagList;
+        }
+
+        public TagStringList combineTagStrings(string[] tagStrings)
+        {
+            TagStringList combinedList = new TagStringList();
+            foreach (string ts in tagStrings)
+            {
+                TagStringList tagList = parseTags(ts);
+                if (tagList.Count > 0)
+                    combinedList.AddRange(tagList);
+            }
+            return combinedList;
         }
 
         public TmiImage(string nodename, string idname, string imagename, string filename, string filenamemedium, string filenamethumb,
@@ -207,12 +215,12 @@ namespace TmiPivot
             Taxon = handleNullValue(taxon);
             CommonName = handleNullValue(commonname);
             Family = handleNullValue(family);
-            ImageUiTags = parseTags(imageuitags);
             ImageDescription = handleNullValue(description);
-            DistinguishingFeatures = parseTags(distinguishingfeatures);
-            NodeUiTags = parseTags(nodeuitags);
             LightTypeName = lighttypename;
 
+            string[] tagStrings = { imageuitags, nodeuitags, distinguishingfeatures };
+            CombinedTags = combineTagStrings(tagStrings);
+            
             ImageMediumLoaded = false;
 
             if (IdName == "Plant")
@@ -241,37 +249,20 @@ namespace TmiPivot
             if (result.Length > 0)
                 result += "\n";
 
-            if (DistinguishingFeatures.Count > 0)
+            if (CombinedTags.Count > 0)
             {
-                string distFeats = String.Empty;
-                foreach (string df in DistinguishingFeatures)
+                string tag = String.Empty;
+                foreach (string t in CombinedTags)
                 {
-                    distFeats += df + " ";
+                    tag += t + " ";
                 }
-                result += distFeats;
+                result += tag;
             }
-            if (ImageUiTags.Count > 0)
-            {
-                string iut = String.Empty;
-                foreach (string imageTag in ImageUiTags)
-                {
-                    iut += imageTag + " ";
-                }
-                result += iut;
-            }
-            if (NodeUiTags.Count > 0)
-            {
-                string nut = String.Empty;
-                foreach (string nodeTag in NodeUiTags)
-                {
-                    nut += nodeTag + " ";
-                }
-                result += nut;
-            }
-            TagBlob = (result.Length > 0) ? result : "[no info]";
 
-            TaxonItalic = String.Empty;
-            TaxonPlain = String.Empty;
+            InfoText = (result.Length > 0) ? result : "[no info]";
+
+            HeadTaxonItalic = String.Empty;
+            HeadTaxonPlain = String.Empty;
 
             char[] delimiter = { ' ' };
             string[] taxonTokens = Taxon.Split(delimiter, StringSplitOptions.None);
@@ -281,12 +272,12 @@ namespace TmiPivot
                 if (curTok < 2)
                 {
                     if (tok.ToLower().Equals("sp."))
-                        TaxonPlain += " " + tok;
+                        HeadTaxonPlain += " " + tok;
                     else
-                        TaxonItalic += " " + tok;
+                        HeadTaxonItalic += " " + tok;
                 }
                 else
-                    TaxonPlain += " " + tok;
+                    HeadTaxonPlain += " " + tok;
                 curTok++;
             }
 
