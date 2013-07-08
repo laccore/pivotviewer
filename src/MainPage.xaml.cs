@@ -45,16 +45,12 @@ namespace TmiPivot
 
                 using (CsvReader reader = new CsvReader(sri.Stream))
                 {
-                    reader.ValueDelimiter = '@';
                     HeaderRecord head = reader.ReadHeaderRecord();
 
-                    //int recCount = 0;
-                    while (reader.HasMoreRecords)// && recCount < 620)
+                    while (reader.HasMoreRecords)
                     {
                         DataRecord rec = reader.ReadDataRecord();
                         tmiImageList.Add(createFromRecord(rec));
-                        //dumpRecord(rec);
-                        //recCount++;
                     }
 
                     reader.Close();
@@ -74,11 +70,6 @@ namespace TmiPivot
             Uri uri = (e.Item as TmiImage).ImageBigPath;
             e.Commands.Add(new AdornerCommand(uri));
 	    }
-
-        private void MyPV_SelectionChanged(object sender, EventArgs e)
-        {
-            TmiImage.LoadBigImage(MyPV.SelectedItem as TmiImage);
-        }
 
         public void dumpRecord(DataRecord rec)
         {
@@ -103,6 +94,9 @@ namespace TmiPivot
 
     public class TmiImage : INotifyPropertyChanged
     {
+        public static string ComponentDomain = "https://tmi.laccore.umn.edu";
+        public static string ComponentDir = "/components";
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string NodeName { get; set; }
@@ -111,7 +105,6 @@ namespace TmiPivot
         public string FilenameBig { get; set; }
         public string FilenameMedium { get; set; }
         public string FilenameThumb { get; set; }
-        public string ExpeditionCode { get; set; }
         public string LakeCode { get; set; }
         public string LakeName { get; set; }
         public string Magnification { get; set; }
@@ -127,26 +120,9 @@ namespace TmiPivot
         public string LightTypeName { get; set; }
         public List<string> CombinedTags { get; set; }
         public Uri ImageBigPath { get; set; }
-        public string ImageMediumPath { get; set; }
+
         public BitmapImage ImageThumb { get; set; }
-        public BitmapImage imageMedium;
-        public BitmapImage ImageMedium
-        {
-            get { return imageMedium; }
-            set
-            {
-                if (imageMedium == null || !imageMedium.Equals(value as BitmapImage))
-                {
-                    imageMedium = value;
-                    if (!ImageMediumLoaded && PropertyChanged != null)
-                    {
-                        ImageMediumLoaded = true;
-                        PropertyChanged(this, new PropertyChangedEventArgs("ImageMedium"));
-                        PropertyChanged(this, new PropertyChangedEventArgs("ImageMediumLoaded"));
-                    }
-                }
-            }
-        }
+        public BitmapImage ImageMedium { get; set; }
 
         // members used to display high-detail trading card (when zoomed in)
         public SolidColorBrush HeadColor { get; set; }
@@ -154,11 +130,6 @@ namespace TmiPivot
         public string HeadTaxonItalic { get; set; }
         public string HeadTaxonPlain { get; set; }
         public string InfoText { get; set; }
-
-        // To trigger redraw of a trading card once its medium-res image is downloaded, a pivot property (anything in
-        // <sdk:PivotViewer.PivotProperties>) needs to be changed. Use this semi-dummy property to force redraw
-        // without modifying meaningful image metadata.
-        public bool ImageMediumLoaded { get; set; }
 
         public TagStringList parseTags(string tagString)
         {
@@ -221,8 +192,6 @@ namespace TmiPivot
             string[] tagStrings = { imageuitags, nodeuitags, distinguishingfeatures };
             CombinedTags = combineTagStrings(tagStrings);
             
-            ImageMediumLoaded = false;
-
             if (IdName == "Plant")
                 HeadColor = new SolidColorBrush(Colors.Green);
             else if (IdName == "Mineral")
@@ -243,7 +212,7 @@ namespace TmiPivot
 
             string result = String.Empty;
             if (CommonName.Length > 0)
-                result += "Common Name: " + CommonName + " ";
+                result += "Common Name: " + CommonName + "\n";
             if (Family.Length > 0)
                 result += "Family: " + Family;
             if (result.Length > 0)
@@ -286,28 +255,22 @@ namespace TmiPivot
 
             try
             {
-                // thumbnails are included in application (.XAP, which is just a renamed ZIP archive) package
+                // thumbnails are included in application bundle (.XAP, which is just a renamed ZIP archive) package
                 string thumbPath = "components/" + loweridname + "/" + lowernodename + "/" + FilenameThumb;
                 StreamResourceInfo thumbSri = Application.GetResourceStream(new Uri(thumbPath, UriKind.Relative));
                 ImageThumb = new BitmapImage();
                 ImageThumb.SetSource(thumbSri.Stream);
 
-                // initially set ImageMedium source to ImageThumb - we download real ImageMedium on the fly
-                ImageMedium = ImageThumb;
-                ImageMediumPath = "http://www.beerolf.com/components/" + loweridname + "/" + lowernodename + "/" + FilenameMedium;
-                ImageBigPath = new Uri("http://www.beerolf.com/components/" + loweridname + "/" + lowernodename + "/" + FilenameBig, UriKind.Absolute);
+                // medium-res images are downloaded on the fly
+                string baseImagePath = TmiImage.ComponentDomain + TmiImage.ComponentDir;
+                string medPath = baseImagePath + "/" + loweridname + "/" + lowernodename + "/" + FilenameMedium;
+                ImageMedium = new BitmapImage(new Uri(medPath, UriKind.Absolute));
+                ImageBigPath = new Uri(baseImagePath + "/" + loweridname + "/" + lowernodename + "/" + FilenameBig, UriKind.Absolute);
             }
             catch (Exception foo)
             {
                 System.Diagnostics.Debug.WriteLine("### Exception while reading {0}: {1}", FilenameThumb, foo.ToString());
             }
-        }
-
-        public static void LoadBigImage(TmiImage ti)
-        {
-            BitmapImage bi = new BitmapImage();
-            bi.UriSource = new Uri(ti.ImageMediumPath, UriKind.Absolute);
-            ti.ImageMedium = bi;
         }
 
         private string handleNullValue(string rec)
@@ -347,7 +310,7 @@ namespace TmiPivot
 
         public Uri Icon
         {
-            get { return new Uri("http://www.beerolf.com/img/magglass.png", UriKind.Absolute); }
+            get { return new Uri("https://tmi.laccore.umn.edu/images/magglass.png", UriKind.Absolute); }
         }
 
         public object ToolTip

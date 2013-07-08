@@ -9,7 +9,7 @@
     d:DesignHeight="300" d:DesignWidth="400">
     
     <Grid x:Name="LayoutRoot" Background="White">
-        <sdk:PivotViewer x:Name="MyPV" SelectionChanged="MyPV_SelectionChanged">
+        <sdk:PivotViewer x:Name="MyPV">
             <!--Setting PivotProperties-->
             <sdk:PivotViewer.PivotProperties>
                 <!-- order of items determines display order in filter and properties -->
@@ -17,7 +17,7 @@
                 <sdk:PivotViewerStringProperty Id="NodeName" Options="CanFilter" DisplayName="Unique Identification" Binding="{Binding NodeName}" />
                 <sdk:PivotViewerStringProperty Id="Taxon" Options="CanFilter" DisplayName="Taxon" Binding="{Binding Taxon}" />
                 <sdk:PivotViewerStringProperty Id="CommonName" Options="CanSearchText" DisplayName="Common Name" Binding="{Binding CommonName}" />
-                <sdk:PivotViewerStringProperty Id="Family" Options="CanSearchText" DisplayName="Family" Binding="{Binding Family}" />
+                <sdk:PivotViewerStringProperty Id="Family" Options="CanFilter,CanSearchText" DisplayName="Family" Binding="{Binding Family}" />
                 <sdk:PivotViewerStringProperty Id="Tags" Options="CanFilter,CanSearchText" DisplayName="Tags" Binding="{Binding CombinedTags}" />
                 <sdk:PivotViewerStringProperty Id="ImageDescription" Options="CanSearchText,WrappingText" DisplayName="Description" Binding="{Binding ImageDescription}" />
                 <sdk:PivotViewerStringProperty Id="Notes" Options="CanSearchText,WrappingText" DisplayName="Notes" Binding="{Binding Notes}" />
@@ -30,8 +30,6 @@
                 <sdk:PivotViewerStringProperty Id="LakeCode" Options="CanSearchText" DisplayName="Site Code" Binding="{Binding LakeCode}" />
                 <sdk:PivotViewerStringProperty Id="Section" Options="CanSearchText" DisplayName="Section" Binding="{Binding Section}" />
                 <sdk:PivotViewerStringProperty Id="SiteHole" Options="CanSearchText" DisplayName="Site/Hole" Binding="{Binding SiteHole}" />
-                
-                <sdk:PivotViewerStringProperty Id="ImageMediumLoaded" Options="Private" DisplayName="Image Medium Loaded" Binding="{Binding ImageMediumLoaded}" />
             </sdk:PivotViewer.PivotProperties>
 
             <!--Setting data-->
