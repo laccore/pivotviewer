@@ -1,3 +1,6 @@
+April 26, 2018
+The TMI Silverlight PivotViewer has been replaced with the functionally equivalent HTML5 viewer here: https://github.com/liside/SuAVE
+
 TMI PivotViewer README
 June 11, 2013
 
